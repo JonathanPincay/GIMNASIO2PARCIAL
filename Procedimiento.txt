@@ -1,0 +1,12 @@
+--Un procedimiento almacenado que devuelva las membresías obtenidas por los tipos de cliente durante un día.
+create or replace function total (varchar, integer) returns decimal 
+as
+$$
+Select sum(m_mensual) from membresia, tipo_de_cliente
+WHERE 
+membresia.m_id = membresia.m_mensual and m_quincenal = $1 and m_id = $2
+
+$$
+language SQL;
+select total('MAO', 1);
+

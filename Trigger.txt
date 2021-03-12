@@ -1,0 +1,26 @@
+--Trigger que no permita entrenar un tipo de cliente cuando este no cuenta con una membresía disponible.  
+
+CREATE OR REPLACE FUNCTION  limite() RETURNS TRIGGER                                                 
+AS
+$limite$ 
+  DECLARE
+    cantidad int;
+    ful int;
+BEGIN
+   select count(*) into cantidad from TIPO_DE_CLIENTE where tc_id=new.tc_id;
+   select e_id into ful from ENTRENADOR;
+   if ( cantidad >= ful ) then
+   RAISE EXCEPTION 'No se puede entrenar a este tipo de cliente porque no cuenta con una membresia disponible';
+   END if;
+   RETURN new;
+END;
+$limite$
+LANGUAGE plpgsql;
+
+--..--
+create trigger limite before insert
+on TIPO_DE_CLIENTE fOR EACH ROW
+execute procedure limite();
+
+--INSERTAR DATOS VERIFICAR TRIGGER
+INSERT INTO TIPO_DE_CLIENTE VALUES('25','01','01','MAO','LINO');

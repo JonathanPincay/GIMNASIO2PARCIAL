@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FINALEUROJONA" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7281c67f-5268-418e-a4ad-6c57c4c5ccf9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="62"/>
+	<queryString>
+		<![CDATA[SELECT
+TC_MAO,
+TC_LINO,
+COUNT(M_DIARIO) as cantidad
+FROM
+PUBLIC.TIPO_DE_CLIENTE
+INNER JOIN PUBLIC.MEMBRESIA ON MEMBRESIA.M_ID = MEMBRESIA.TC_ID
+GROUP BY
+TC_MAO,
+TC_LINO]]>
+	</queryString>
+	<field name="tc_mao" class="java.lang.String"/>
+	<field name="tc_lino" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="90" y="13" width="372" height="43" uuid="14494457-6d05-4d9e-aed5-4d4a23a06ea0"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOSTRAR LA CANTIDAD DE MEMBRESÍA QUE INGRESA DIARIAMENTE EN EL GIMNASIO.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="6" width="90" height="50" uuid="17e48003-3739-4a63-ae68-33caada52f92"/>
+				<imageExpression><![CDATA["C:\\Users\\Pincay\\Pictures\\Base de datos\\uleam.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="462" y="13" width="93" height="51" uuid="c7b5909f-0aaa-48a9-873c-465f032cb771"/>
+				<imageExpression><![CDATA["C:\\Users\\Pincay\\Pictures\\Base de datos\\facci.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="13" width="273" height="20" uuid="06aca88d-82d1-4a53-8f8e-dcf8ef20c381"/>
+				<text><![CDATA[Universo De Discurso: GIMNASIO EUROJONA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="41" width="194" height="20" uuid="64e1ebb3-2d42-4663-bfbe-32f744c7d40b"/>
+				<text><![CDATA[Docente Tutor: Ing. Robert Moreira.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="13" width="209" height="20" uuid="73164d12-4dbf-4c81-97a1-6dedcf1c54fa"/>
+				<text><![CDATA[Estudiante: Pincay Anchundia Jonathan ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="41" width="100" height="20" uuid="a19cbc00-98e7-46b7-ad19-c5bb6c6a255c"/>
+				<text><![CDATA[Curso: 5 "A"]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="29" y="30" width="100" height="20" uuid="d05c781b-c819-4510-906f-29c2bc498c52"/>
+				<text><![CDATA[CLIENTE MENSUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="30" width="100" height="20" uuid="909b7be5-90bc-433d-a0b0-27fc140307a5"/>
+				<text><![CDATA[CLIENTE DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="30" width="100" height="20" uuid="83af64a2-edbf-402a-b4dd-3fe919dc6948"/>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="181" y="30" width="1" height="20" uuid="40d173c7-1123-4266-805f-6e8afbd5cd64"/>
+			</line>
+			<line>
+				<reportElement x="349" y="30" width="1" height="20" uuid="a61953c2-35bb-49b7-8c91-820a5094aab7"/>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="183" y="2" width="194" height="20" uuid="14396104-12db-4ba0-b7e7-1101cbc36035"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="false" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[DATOS DE LOS CLIENTES]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="391" splitType="Stretch">
+			<textField>
+				<reportElement x="45" y="30" width="100" height="20" uuid="9fa81e80-dab0-4f2f-b3e5-99784e171947"/>
+				<textFieldExpression><![CDATA[$F{tc_mao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="30" width="100" height="20" uuid="8178f56e-aa07-474e-9840-a4e3e07de016"/>
+				<textFieldExpression><![CDATA[$F{tc_lino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="394" y="30" width="100" height="20" uuid="f2ad3068-45da-44af-8631-cc06e553e04e"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="-30" y="67" width="313" height="246" uuid="33f4a079-4bc4-474b-9e64-3301a000c08b"/>
+				<imageExpression><![CDATA["C:\\Users\\Pincay\\Pictures\\Base de datos\\Calculos.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="182" y="30" width="1" height="20" uuid="ce794052-0848-49e6-8821-e6817b3d9369"/>
+			</line>
+			<line>
+				<reportElement x="350" y="30" width="1" height="20" uuid="e70b062f-f1d4-46d7-9b64-2dd4021a074e"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="345" width="100" height="20" uuid="ae1497b2-2629-4f17-9d8e-2c16715514ae"/>
+				<textElement>
+					<font isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[GIMNASIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="365" width="100" height="20" uuid="c3434f1b-cda8-482a-b234-a5d9844fa16c"/>
+				<text><![CDATA[EUROJONA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="345" width="100" height="20" uuid="4cfce02e-7718-4f9a-98ce-e835f7f1cd16"/>
+				<textElement>
+					<font isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="365" width="100" height="20" uuid="ef17d40e-25c6-4986-973d-6658110accda"/>
+				<text><![CDATA[LOS BAJOS CITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="345" width="100" height="20" uuid="09c01c73-8563-49fc-b0b3-5a9e68686b78"/>
+				<textElement>
+					<font isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="365" width="100" height="20" uuid="ba49334b-a033-4535-a322-c329f11a5840"/>
+				<text><![CDATA[0939583633]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="345" width="100" height="20" uuid="c571f10f-63d8-4093-b999-2b4b97d27b42"/>
+				<textElement>
+					<font isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CORREO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="365" width="137" height="20" uuid="232e387e-554d-4b82-befb-c0fdfc5b00bc"/>
+				<text><![CDATA[erurojona10@gmail.com]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="33" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="33" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

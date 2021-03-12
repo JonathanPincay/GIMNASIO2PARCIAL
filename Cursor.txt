@@ -1,0 +1,20 @@
+--Cursor que muestre el numero de cliente que cuenta con una membresía.
+do $$
+declare 
+c_clientes int = 0;
+asignado record;
+max int;
+--creacion del cursor
+PIB cursor for select * from cliente,membresia,tipo_de_cliente
+where membresia.c_id = membresia.m_id and membresia.m_id = tipo_de_cliente.tc_id and e_id = 5 and tc_mao like '%Pa%';
+begin
+for max in PIB
+loop
+c_clientes = c_clientes + count(max.m_id);
+end loop;
+open PIB;
+fetch PIB into asignado;
+Raise notice 'CLIENTE: %, MEMBRESIA: %, CANTIDAD: %  ', 
+asignado.c_nombre, asignado.m_mensual, c_clientes;
+end $$
+language 'plpgsql';
